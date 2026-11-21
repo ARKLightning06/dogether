@@ -5,6 +5,10 @@ import entity.Task;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Interactor for the FilterTasks use case.
+ * Filters a board's tasks by status and optionally by assigned members.
+ */
 public class FilterTasksInteractor implements FilterTasksInputBoundary{
     private final FilterTasksOutputBoundary presenter;
     private final FilterTasksDataAccessInterface dataAccess;
@@ -14,6 +18,11 @@ public class FilterTasksInteractor implements FilterTasksInputBoundary{
         this.dataAccess = dataAccess;
 
     }
+    /**
+     * Filters tasks on the given board by status and assigned members.
+     * If no members are specified, all tasks matching the status are returned.
+     * @param in the input data
+     */
     @Override
     public void execute(FilterTasksInputData in){
         Board board = dataAccess.getBoard(in.getBoardId());

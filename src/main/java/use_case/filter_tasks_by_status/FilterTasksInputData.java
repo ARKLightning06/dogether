@@ -3,6 +3,9 @@ package use_case.filter_tasks_by_status;
 import entity.Task;
 import java.util.List;
 
+/**
+ * Input data for the FilterTasks use case.
+ */
 public class FilterTasksInputData {
     private final String username;
     private final String boardId;
