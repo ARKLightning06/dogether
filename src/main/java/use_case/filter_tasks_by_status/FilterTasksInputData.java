@@ -1,6 +1,7 @@
 package use_case.filter_tasks_by_status;
 
-import entity.Task;
+import entity.TaskStatus;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -9,14 +10,14 @@ import java.util.List;
 public class FilterTasksInputData {
     private final String username;
     private final String boardId;
-    private final Task.TaskStatus status;
+    private final TaskStatus status;
     private final List<String> members;
 
-    public FilterTasksInputData(String username, String boardId, Task.TaskStatus status, List<String> members) {
+    public FilterTasksInputData(String username, String boardId, TaskStatus status, List<String> members) {
         this.username = username;
         this.boardId = boardId;
         this.status = status;
-        this.members = members;
+        this.members = (members != null) ? members : Collections.emptyList();
     }
 
     public String getUsername() { return username; }
