@@ -22,6 +22,6 @@ public class FilterTasksInputData {
 
     public String getUsername() { return username; }
     public String getBoardId() { return boardId; }
-    public Task.TaskStatus getStatus() { return status; }
+    public TaskStatus getStatus() { return status; }
     public List<String> getMembers() { return members; }
 }
