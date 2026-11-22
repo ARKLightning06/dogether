@@ -5,9 +5,10 @@ public class User {
     private String password;
 
     public User( String username, String password){
-        if (username.isEmpty()) {
+        if (username == null || username.isEmpty()) {
             throw new IllegalArgumentException("Username cannot be empty");
-        } if (password.isEmpty()) {
+        }
+        if (password == null || password.isEmpty()) {
             throw new IllegalArgumentException("Password cannot be empty");
         }
         this.username = username;
