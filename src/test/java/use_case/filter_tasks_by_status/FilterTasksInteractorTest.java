@@ -60,6 +60,7 @@ class FilterTasksInteractorTest {
         private final List<Task> tasks;
 
         FakeBoard(List<String> members, List<Task> tasks) {
+            super("board-1", "Test Board", "owner");
             this.members = members;
             this.tasks = tasks;
         }

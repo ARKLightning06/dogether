@@ -19,10 +19,13 @@ public class FilterTasksPresenter implements FilterTasksOutputBoundary {
     public void prepareSuccessView(FilterTasksOutputData out) {
         boardViewModel.setTaskIds(out.getTaskIds());
         boardViewModel.setTaskNames(out.getTaskNames());
+        boardViewModel.setError("");
+        boardViewModel.firePropertyChanged();
     }
 
     @Override
     public void prepareFailView(String error) {
         boardViewModel.setError(error);
+        boardViewModel.firePropertyChanged();
     }
 }
