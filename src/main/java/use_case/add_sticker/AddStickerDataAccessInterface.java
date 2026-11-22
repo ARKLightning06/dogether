@@ -12,3 +12,6 @@ public interface AddStickerDataAccessInterface {
 
     void saveSticker(String boardId, PlacedSticker sticker) throws AddStickerException;
 }
+
+// TODO: switch to getBoard(boardId) / saveBoard(board) once Board (#15) is merged,
+//  so the interactor can use board.canEdit, board.isFull, and board.addSticker.
