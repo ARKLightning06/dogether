@@ -20,4 +20,8 @@ public class BoardViewModel extends ViewModel<BoardState> {
     public void setImageUrls(List<String> imageUrls) { getState().setImageUrls(imageUrls); firePropertyChanged(); }
     public void setPositions(List<Point> positions) { getState().setPositions(positions); firePropertyChanged(); }
     public void setError(String error) { getState().setError(error); firePropertyChanged(); }
+    public void setCompletionLabel(String label) {
+        getState().setCompletionLabel(label);
+        firePropertyChanged();
+    }
 }

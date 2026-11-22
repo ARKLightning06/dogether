@@ -15,6 +15,7 @@ public class BoardState {
     private List<String> imageUrls = Collections.emptyList();
     private List<Point> positions = Collections.emptyList();
     private String error = "";
+    private String completionLabel = "";
 
     public String getBoardId() { return boardId; }
     public void setBoardId(String boardId) { this.boardId = boardId; }
@@ -36,4 +37,6 @@ public class BoardState {
     public void setPositions(List<Point> positions) { this.positions = positions; }
     public String getError() { return error; }
     public void setError(String error) { this.error = error; }
+    public String getCompletionLabel() { return completionLabel; }
+    public void setCompletionLabel(String completionLabel) { this.completionLabel = completionLabel; }
 }
