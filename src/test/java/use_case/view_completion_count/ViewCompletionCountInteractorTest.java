@@ -57,6 +57,7 @@ class ViewCompletionCountInteractorTest {
         private final List<Task> tasks;
 
         FakeBoard(List<Task> tasks) {
+            super("board-1", "Test Board", "owner");
             this.tasks = tasks;
         }
 
