@@ -5,8 +5,8 @@ package entity;
  */
 
 public class User {
-    private String username;
-    private String password;
+    private final String username;
+    private final String password;
 
     /**
      * Creates a user with a non-empty username and non-empty password.
