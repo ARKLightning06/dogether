@@ -10,7 +10,7 @@ import java.util.List;
  *
  * <p>The state is shared between the Add Task and Edit Task use cases.
  */
-public class TaskEditorState {
+public class EditTaskState {
     private String taskId = "";
     private String name = "";
     private String description = "";
