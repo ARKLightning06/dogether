@@ -23,7 +23,7 @@ public class EditTaskPresenter implements EditTaskOutputBoundary {
     /**
      * Constructs an Edit Task presenter.
      *
-     * @param taskEditorViewModel the view model for the task editor
+     * @param editTaskViewModel the view model for the task editor
      * @param boardViewModel the view model for the board
      * @param viewManagerModel the model responsible for navigation
      */
