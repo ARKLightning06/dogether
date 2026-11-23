@@ -49,8 +49,7 @@ public class GiphyStickerDataAccessObject implements SearchStickerDataAccessInte
             }
             JSONObject json = new JSONObject(response.body().string());
             return parseStickers(json.getJSONArray("data"));
-        }
-        catch (IOException | JSONException ex) {
+        } catch (IOException | JSONException ex) {
             throw new StickerSearchException("Could not reach GIPHY: " + ex.getMessage());
         }
     }
