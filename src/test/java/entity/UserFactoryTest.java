@@ -15,7 +15,6 @@ public class UserFactoryTest {
 
     @Test
     void UserMethodsWork(){
-        User user = userFactory.create("ehinomen", "12345");
         assertEquals("ehinomen", userFactory.create("ehinomen", "12345").getUsername());
         assertEquals("12345", userFactory.create("ehinomen", "12345").getPassword());
     }
