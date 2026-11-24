@@ -1,7 +1,5 @@
 package use_case.logout;
 
-import use_case.login.LoginOutputData;
-
 /**
  * The Output Boundary for logging out of Dogether.
  */
