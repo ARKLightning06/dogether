@@ -15,10 +15,10 @@ public class User {
      * @throws IllegalArgumentException if the username or password are empty
      */
     public User( String username, String password){
-        if (username == null || username.isEmpty()) {
+        if (username == null || username.isBlank()) {
             throw new IllegalArgumentException("Username cannot be empty");
         }
-        if (password == null || password.isEmpty()) {
+        if (password == null || password.isBlank()) {
             throw new IllegalArgumentException("Password cannot be empty");
         }
         this.username = username;
