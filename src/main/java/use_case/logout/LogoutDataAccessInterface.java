@@ -6,6 +6,15 @@ package use_case.logout;
 public interface LogoutDataAccessInterface {
 
     /**
-     * Sets the current username
+     * Sets the current username, the  current user of the application
+     * @param username the current username
      */
+
+    void setCurrentUsername(String username);
+
+    /**
+     * Returns the current username
+     */
+
+    String getCurrentUsername();
 }
