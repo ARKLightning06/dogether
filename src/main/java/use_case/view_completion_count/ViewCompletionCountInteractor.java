@@ -11,7 +11,8 @@ public class ViewCompletionCountInteractor implements ViewCompletionCountInputBo
     private final ViewCompletionCountDataAccessInterface dataAccess;
     private final ViewCompletionCountOutputBoundary presenter;
 
-    public ViewCompletionCountInteractor(ViewCompletionCountDataAccessInterface dataAccess, ViewCompletionCountOutputBoundary presenter) {
+    public ViewCompletionCountInteractor(ViewCompletionCountDataAccessInterface dataAccess,
+                                         ViewCompletionCountOutputBoundary presenter) {
         this.dataAccess = dataAccess;
         this.presenter = presenter;
     }
