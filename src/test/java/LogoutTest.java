@@ -48,6 +48,6 @@ public class LogoutTest {
 
         logoutInteractor.execute();
 
-        assertEquals("Successfully logged out ehinomen.", fakeLogoutPresenter.successData.getMessage());
+        assertEquals("ehinomen", fakeLogoutPresenter.successData.getUsername());
     }
 }

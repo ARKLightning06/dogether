@@ -5,13 +5,13 @@ package use_case.logout;
  */
 public class LogoutOutputData {
 
-    private final String message;
+    private final String username;
 
-    public LogoutOutputData(String message){
-        this.message = message;
+    public LogoutOutputData(String username){
+        this.username = username;
     }
 
-    public String getMessage() {
-        return message;
+    public String getUsername() {
+        return username;
     }
 }
