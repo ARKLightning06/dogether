@@ -1,17 +1,24 @@
 package use_case.add_sticker;
 
-import entity.PlacedSticker;
+import entity.Board;
 
 /**
  * What the add-sticker use case needs from storage.
+ * Methods may throw use_case.DataAccessException if storage can't be reached.
  */
 public interface AddStickerDataAccessInterface {
-    int countCompletedTasks(String boardId) throws AddStickerException;
+    /**
+     * Loads a board.
+     *
+     * @param boardId the board's id
+     * @return the board, or null if it doesn't exist
+     */
+    Board getBoard(String boardId);
 
-    int countStickers(String boardId) throws AddStickerException;
-
-    void saveSticker(String boardId, PlacedSticker sticker) throws AddStickerException;
+    /**
+     * Saves a board, including its stickers.
+     *
+     * @param board the board to save
+     */
+    void saveBoard(Board board);
 }
-
-// TODO: switch to getBoard(boardId) / saveBoard(board) once Board (#15) is merged,
-//  so the interactor can use board.canEdit, board.isFull, and board.addSticker.
