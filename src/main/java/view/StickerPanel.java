@@ -42,15 +42,15 @@ import java.util.concurrent.Executors;
  * Images load in the background so the grid appears right away.
  */
 public class StickerPanel extends JPanel implements PropertyChangeListener {
-    // Colours, kept together so the look is easy to change
-    private static final Color BACKGROUND = new Color(0xFFF8F1);
-    private static final Color TILE = Color.WHITE;
-    private static final Color TILE_HOVER = new Color(0xFBEAF0);
-    private static final Color TILE_BORDER = new Color(0xEFE3D8);
-    private static final Color ACCENT = new Color(0xD4537E);
-    private static final Color TEXT = new Color(0x3D3A36);
-    private static final Color MUTED = new Color(0x8A847C);
-    private static final Color ERROR = new Color(0xA32D2D);
+    // Colours from the team UI doc (see StickerStyle)
+    private static final Color BACKGROUND = StickerStyle.BACKGROUND;
+    private static final Color TILE = StickerStyle.WHITEBOARD;
+    private static final Color TILE_HOVER = StickerStyle.PINK;
+    private static final Color TILE_BORDER = StickerStyle.FRAME;
+    private static final Color ACCENT = StickerStyle.PINK;
+    private static final Color TEXT = StickerStyle.TEXT;
+    private static final Color MUTED = StickerStyle.MUTED;
+    private static final Color ERROR = StickerStyle.ERROR;
 
     private static final int COLUMNS = 4;
     private static final int TILE_SIZE = 112;
@@ -64,6 +64,7 @@ public class StickerPanel extends JPanel implements PropertyChangeListener {
     private final ExecutorService imageLoader = Executors.newFixedThreadPool(LOADER_THREADS);
     private final Map<String, ImageIcon> imageCache = new ConcurrentHashMap<>();
     private int searchNumber;
+    private StickerPickListener pickListener;
 
     public StickerPanel(SearchStickerViewModel viewModel, SearchStickerController controller) {
         this.controller = controller;
@@ -80,11 +81,8 @@ public class StickerPanel extends JPanel implements PropertyChangeListener {
     }
 
     private JPanel buildHeader() {
-        final JLabel title = new JLabel("Stickers");
-        title.setFont(title.getFont().deriveFont(Font.BOLD, 20f));
-        title.setForeground(TEXT);
 
-        searchField.setFont(searchField.getFont().deriveFont(14f));
+        searchField.setFont(StickerStyle.body(Font.PLAIN, 14f));
         searchField.setForeground(TEXT);
         searchField.setBorder(BorderFactory.createCompoundBorder(
                 BorderFactory.createLineBorder(TILE_BORDER, 1, true),
@@ -93,7 +91,8 @@ public class StickerPanel extends JPanel implements PropertyChangeListener {
 
         final JButton searchButton = new JButton("Search");
         searchButton.setFocusPainted(false);
-        searchButton.setForeground(Color.WHITE);
+        searchButton.setFont(StickerStyle.body(Font.PLAIN, 13f));
+        searchButton.setForeground(TEXT);
         searchButton.setBackground(ACCENT);
         searchButton.setOpaque(true);
         searchButton.setBorderPainted(false);
@@ -107,11 +106,10 @@ public class StickerPanel extends JPanel implements PropertyChangeListener {
         searchRow.add(searchButton, BorderLayout.EAST);
 
         message.setForeground(MUTED);
-        message.setFont(message.getFont().deriveFont(12f));
+        message.setFont(StickerStyle.body(Font.PLAIN, 12f));
 
         final JPanel header = new JPanel(new BorderLayout(0, 10));
         header.setOpaque(false);
-        header.add(title, BorderLayout.NORTH);
         header.add(searchRow, BorderLayout.CENTER);
         header.add(message, BorderLayout.SOUTH);
         return header;
@@ -135,8 +133,13 @@ public class StickerPanel extends JPanel implements PropertyChangeListener {
     private JLabel buildFooter() {
         final JLabel footer = new JLabel("Powered by GIPHY and Pixabay");
         footer.setForeground(MUTED);
-        footer.setFont(footer.getFont().deriveFont(11f));
+        footer.setFont(StickerStyle.body(Font.PLAIN, 11f));
         return footer;
+    }
+
+    /** Tells the panel who to notify when a sticker is clicked. */
+    public void setStickerPickListener(StickerPickListener listener) {
+        this.pickListener = listener;
     }
 
     private void search() {
@@ -162,16 +165,27 @@ public class StickerPanel extends JPanel implements PropertyChangeListener {
         } else {
             message.setForeground(MUTED);
             message.setText(state.getImageUrls().size() + " stickers for \"" + state.getQuery() + "\"");
-            showTiles(state.getImageUrls());
+            showTiles(state.getStickerIds(), state.getImageUrls());
         }
         grid.revalidate();
         grid.repaint();
     }
 
-    private void showTiles(List<String> imageUrls) {
+    private void showTiles(List<String> stickerIds, List<String> imageUrls) {
         final int thisSearch = searchNumber;
-        for (String url : imageUrls) {
+        for (int i = 0; i < imageUrls.size(); i++) {
+            final String url = imageUrls.get(i);
+            final String stickerId = stickerIds.get(i);
             final StickerTile tile = new StickerTile();
+            tile.setToolTipText("Buy for 1 star");
+            tile.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent event) {
+                    if (pickListener != null) {
+                        pickListener.stickerPicked(stickerId, url);
+                    }
+                }
+            });
             grid.add(tile);
             final ImageIcon cached = imageCache.get(url);
             if (cached != null) {
