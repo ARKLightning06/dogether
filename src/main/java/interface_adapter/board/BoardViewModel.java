@@ -15,15 +15,47 @@ public class BoardViewModel extends ViewModel<BoardState> {
         setState(new BoardState());
     }
 
-    public void setTaskIds(List<String> taskIds) { getState().setTaskIds(taskIds); }
-    public void setTaskNames(List<String> taskNames) { getState().setTaskNames(taskNames); }
-    public void setCompletedCount(int count) { getState().setCompletedCount(count); }
-    public void setTotalCount(int count) { getState().setTotalCount(count); }
-    public void setBoardId(String boardId) { getState().setBoardId(boardId); }
-    public void setTitle(String title) { getState().setTitle(title); }
-    public void setPlacementIds(List<String> placementIds) { getState().setPlacementIds(placementIds); }
-    public void setImageUrls(List<String> imageUrls) { getState().setImageUrls(imageUrls); }
-    public void setPositions(List<Point> positions) { getState().setPositions(positions); }
-    public void setError(String error) { getState().setError(error); }
-    public void setCompletionLabel(String label) { getState().setCompletionLabel(label); }
+    public void setTaskIds(List<String> taskIds) {
+        getState().setTaskIds(taskIds);
+    }
+
+    public void setTaskNames(List<String> taskNames) {
+        getState().setTaskNames(taskNames);
+    }
+
+    public void setCompletedCount(int count) {
+        getState().setCompletedCount(count);
+    }
+
+    public void setTotalCount(int count) {
+        getState().setTotalCount(count);
+    }
+
+    public void setBoardId(String boardId) {
+        getState().setBoardId(boardId);
+    }
+
+    public void setTitle(String title) {
+        getState().setTitle(title);
+    }
+
+    public void setPlacementIds(List<String> placementIds) {
+        getState().setPlacementIds(placementIds);
+    }
+
+    public void setImageUrls(List<String> imageUrls) {
+        getState().setImageUrls(imageUrls);
+    }
+
+    public void setPositions(List<Point> positions) {
+        getState().setPositions(positions);
+    }
+
+    public void setError(String error) {
+        getState().setError(error);
+    }
+
+    public void setCompletionLabel(String label) {
+        getState().setCompletionLabel(label);
+    }
 }

@@ -20,8 +20,19 @@ public class FilterTasksInputData {
         this.members = (members != null) ? members : Collections.emptyList();
     }
 
-    public String getUsername() { return username; }
-    public String getBoardId() { return boardId; }
-    public TaskStatus getStatus() { return status; }
-    public List<String> getMembers() { return members; }
+    public String getUsername() {
+        return username;
+    }
+
+    public String getBoardId() {
+        return boardId;
+    }
+
+    public TaskStatus getStatus() {
+        return status;
+    }
+
+    public List<String> getMembers() {
+        return members;
+    }
 }

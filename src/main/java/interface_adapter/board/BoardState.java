@@ -4,6 +4,10 @@ import java.awt.Point;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * State shown on the board screen. Presenters fill it in through
+ * BoardViewModel, and the board view reads it when it redraws.
+ */
 public class BoardState {
     private String boardId = "";
     private String title = "";
@@ -17,26 +21,91 @@ public class BoardState {
     private String error = "";
     private String completionLabel = "";
 
-    public String getBoardId() { return boardId; }
-    public void setBoardId(String boardId) { this.boardId = boardId; }
-    public String getTitle() { return title; }
-    public void setTitle(String title) { this.title = title; }
-    public List<String> getTaskIds() { return taskIds; }
-    public void setTaskIds(List<String> taskIds) { this.taskIds = taskIds; }
-    public List<String> getTaskNames() { return taskNames; }
-    public void setTaskNames(List<String> taskNames) { this.taskNames = taskNames; }
-    public int getCompletedCount() { return completedCount; }
-    public void setCompletedCount(int completedCount) { this.completedCount = completedCount; }
-    public int getTotalCount() { return totalCount; }
-    public void setTotalCount(int totalCount) { this.totalCount = totalCount; }
-    public List<String> getPlacementIds() { return placementIds; }
-    public void setPlacementIds(List<String> placementIds) { this.placementIds = placementIds; }
-    public List<String> getImageUrls() { return imageUrls; }
-    public void setImageUrls(List<String> imageUrls) { this.imageUrls = imageUrls; }
-    public List<Point> getPositions() { return positions; }
-    public void setPositions(List<Point> positions) { this.positions = positions; }
-    public String getError() { return error; }
-    public void setError(String error) { this.error = error; }
-    public String getCompletionLabel() { return completionLabel; }
-    public void setCompletionLabel(String completionLabel) { this.completionLabel = completionLabel; }
+    public String getBoardId() {
+        return boardId;
+    }
+
+    public void setBoardId(String boardId) {
+        this.boardId = boardId;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public List<String> getTaskIds() {
+        return taskIds;
+    }
+
+    public void setTaskIds(List<String> taskIds) {
+        this.taskIds = taskIds;
+    }
+
+    public List<String> getTaskNames() {
+        return taskNames;
+    }
+
+    public void setTaskNames(List<String> taskNames) {
+        this.taskNames = taskNames;
+    }
+
+    public int getCompletedCount() {
+        return completedCount;
+    }
+
+    public void setCompletedCount(int completedCount) {
+        this.completedCount = completedCount;
+    }
+
+    public int getTotalCount() {
+        return totalCount;
+    }
+
+    public void setTotalCount(int totalCount) {
+        this.totalCount = totalCount;
+    }
+
+    public List<String> getPlacementIds() {
+        return placementIds;
+    }
+
+    public void setPlacementIds(List<String> placementIds) {
+        this.placementIds = placementIds;
+    }
+
+    public List<String> getImageUrls() {
+        return imageUrls;
+    }
+
+    public void setImageUrls(List<String> imageUrls) {
+        this.imageUrls = imageUrls;
+    }
+
+    public List<Point> getPositions() {
+        return positions;
+    }
+
+    public void setPositions(List<Point> positions) {
+        this.positions = positions;
+    }
+
+    public String getError() {
+        return error;
+    }
+
+    public void setError(String error) {
+        this.error = error;
+    }
+
+    public String getCompletionLabel() {
+        return completionLabel;
+    }
+
+    public void setCompletionLabel(String completionLabel) {
+        this.completionLabel = completionLabel;
+    }
 }
