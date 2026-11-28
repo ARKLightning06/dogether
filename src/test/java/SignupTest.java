@@ -45,7 +45,7 @@ public class SignupTest {
             successCalled = true;
             successData = data;
         }
-        public void prepareFailureView(String error) { errorMessage = error; }
+        public void prepareFailView(String error) { errorMessage = error; }
 
         public void switchToLoginView() {
             switchedView = true;
