@@ -53,6 +53,22 @@ public class Task {
     }
 
     /**
+     * Creates an independent copy, preserving workflow and completion state.
+     *
+     * @param source the task to copy
+     */
+    public Task(Task source) {
+        this.id = source.id;
+        this.name = source.name;
+        this.description = source.description;
+        this.deadline = source.deadline;
+        this.colour = source.colour;
+        this.status = source.status;
+        this.assignees = new ArrayList<>(source.assignees);
+        this.completedBy = new HashSet<>(source.completedBy);
+    }
+
+    /**
      * Returns whether the given user is assigned to this task.
      *
      * @param username the username to check
@@ -167,8 +183,8 @@ public class Task {
                     "Task description cannot be null.");
         }
 
-        if (colour == null || colour.isBlank()) {
-            throw new IllegalArgumentException("Task colour cannot be empty.");
+        if (colour == null || !colour.matches("#[0-9a-fA-F]{6}")) {
+            throw new IllegalArgumentException("Enter a valid colour.");
         }
 
         if (assignees == null) {

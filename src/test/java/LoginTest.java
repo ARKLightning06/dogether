@@ -44,11 +44,13 @@ public class LoginTest {
         boolean successCalled = false;
         String errorMessage = null;
 
-        public void preparesSuccessView(LoginOutputData loginOutputData) {
-            successCalled =true;
+        @Override
+        public void prepareSuccessView(LoginOutputData loginOutputData) {
+            successCalled = true;
         }
 
-        public void preparesFailureView(String errorMessage) {
+        @Override
+        public void prepareFailView(String errorMessage) {
             this.errorMessage = errorMessage;
         }
     }

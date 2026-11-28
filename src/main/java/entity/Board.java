@@ -25,6 +25,26 @@ public class Board {
         this.stickers = new ArrayList<>();
     }
 
+    /**
+     * Creates an independent board snapshot for editing before saving.
+     *
+     * @param source the board to copy
+     */
+    public Board(Board source) {
+        this.id = source.id;
+        this.title = source.title;
+        this.ownerUsername = source.ownerUsername;
+        this.members = new HashMap<>(source.members);
+        this.tasks = new ArrayList<>();
+
+        for (Task task : source.tasks) {
+            this.tasks.add(new Task(task));
+        }
+
+        // PlacedSticker and Sticker are immutable.
+        this.stickers = new ArrayList<>(source.stickers);
+    }
+
     public String getId() { return id; }
     public String getTitle() { return title; }
     public void setTitle(String title) { this.title = title; }
