@@ -15,15 +15,15 @@ public class LoginInteractor implements LoginInputBoundary{
 
     public void execute(LoginInputData loginInputData) {
         if (!database.existsByUsername(loginInputData.getUsername())){
-            loginPresenter.preparesFailureView("User does not exist. Please navigate to sign up page.");
+            loginPresenter.prepareFailView("User does not exist. Please navigate to sign up page.");
         }
-        else if (!loginInputData.getPassword().equals(database.get(loginInputData.getUsername()).getPassword())){
-            loginPresenter.preparesFailureView("Password is incorrect. Please try again.");
+        else if (!database.get(loginInputData.getUsername()).getPassword().equals(loginInputData.getPassword())){
+            loginPresenter.prepareFailView("Password is incorrect. Please try again.");
         }
         else{
             database.setCurrentUsername(loginInputData.getUsername());
             LoginOutputData loginOutputData = new LoginOutputData(loginInputData.getUsername());
-            loginPresenter.preparesSuccessView(loginOutputData);
+            loginPresenter.prepareSuccessView(loginOutputData);
         }
     }
 

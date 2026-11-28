@@ -11,13 +11,13 @@ public interface LoginOutputBoundary {
      * @param loginOutputData represents the log in output data
      */
 
-    void preparesSuccessView(LoginOutputData loginOutputData);
+    void prepareSuccessView(LoginOutputData loginOutputData);
 
     /**
      * Prepares the failure view for logging in
      * @param errorMessage represents the failure message
      */
 
-    void preparesFailureView(String errorMessage);
+    void prepareFailView(String errorMessage);
 
 }
