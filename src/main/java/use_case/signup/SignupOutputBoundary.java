@@ -17,7 +17,7 @@ public interface SignupOutputBoundary {
      * @param errorMessage represents the failure message
      */
 
-    void prepareFailureView(String errorMessage);
+    void prepareFailView(String errorMessage);
 
     /**
      * Switches to log in view.
