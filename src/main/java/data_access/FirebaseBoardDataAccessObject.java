@@ -11,6 +11,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import use_case.DataAccessException;
 import use_case.add_sticker.AddStickerDataAccessInterface;
+import use_case.edit_task.EditTaskDataAccessInterface;
 import use_case.filter_tasks_by_status.FilterTasksDataAccessInterface;
 import use_case.view_completion_count.ViewCompletionCountDataAccessInterface;
 
@@ -31,7 +32,8 @@ import java.util.Map;
  * the image itself is saved in the database. GIPHY stickers keep their GIPHY link.
  */
 public class FirebaseBoardDataAccessObject implements AddStickerDataAccessInterface,
-        FilterTasksDataAccessInterface, ViewCompletionCountDataAccessInterface {
+        FilterTasksDataAccessInterface, ViewCompletionCountDataAccessInterface,
+        EditTaskDataAccessInterface {
     private static final MediaType JSON = MediaType.get("application/json");
     private static final String STORED_IMAGE_PREFIX = "pixabay-";
 

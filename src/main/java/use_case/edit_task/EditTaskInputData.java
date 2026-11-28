@@ -2,6 +2,8 @@ package use_case.edit_task;
 
 import entity.TaskStatus;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -41,7 +43,7 @@ public class EditTaskInputData {
         this.description = description;
         this.deadline = deadline;
         this.colour = colour;
-        this.assignees = assignees == null ? null : List.copyOf(assignees);
+        this.assignees = assignees == null ? null : Collections.unmodifiableList(new ArrayList<>(assignees));
         this.status = status;
     }
 

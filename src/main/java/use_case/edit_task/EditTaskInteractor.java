@@ -57,7 +57,7 @@ public class EditTaskInteractor implements EditTaskInputBoundary {
             return;
         }
 
-        Task task = board.getTask(inputData.getTaskId());
+        final Task task = board.getTask(inputData.getTaskId());
 
         if (task == null) {
             presenter.prepareFailView("Task not found.");
@@ -79,8 +79,11 @@ public class EditTaskInteractor implements EditTaskInputBoundary {
             }
         }
 
+        final Board updatedBoard = new Board(board);
+        final Task updatedTask = updatedBoard.getTask(task.getId());
+
         try {
-            task.update(
+            updatedTask.update(
                     inputData.getName(),
                     inputData.getDescription(),
                     inputData.getDeadline(),
@@ -93,14 +96,14 @@ public class EditTaskInteractor implements EditTaskInputBoundary {
         }
 
         try {
-            dataAccess.saveBoard(board);
+            dataAccess.saveBoard(updatedBoard);
         } catch (RuntimeException exception) {
             presenter.prepareFailView("Unable to save the updated task.");
             return;
         }
 
         EditTaskOutputData outputData = new EditTaskOutputData(
-                task.getId(), task.getName());
+                updatedTask.getId(), updatedTask.getName());
 
         presenter.prepareSuccessView(outputData);
     }
