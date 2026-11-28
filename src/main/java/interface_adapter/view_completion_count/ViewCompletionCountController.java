@@ -9,15 +9,17 @@ import use_case.view_completion_count.ViewCompletionCountInputBoundary;
  */
 public class ViewCompletionCountController {
     private final ViewCompletionCountInputBoundary interactor;
-    public ViewCompletionCountController(ViewCompletionCountInputBoundary interactor){
+
+    public ViewCompletionCountController(ViewCompletionCountInputBoundary interactor) {
         this.interactor = interactor;
     }
+
     /**
      * Executes the ViewCompletionCount use case.
      * @param username the logged-in user's username
      * @param boardId the ID of the board to check
      */
-    public void execute(String username, String boardId){
+    public void execute(String username, String boardId) {
         ViewCompletionCountInputData in = new ViewCompletionCountInputData(username, boardId);
         interactor.execute(in);
     }

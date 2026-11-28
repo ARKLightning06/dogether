@@ -4,6 +4,10 @@ import interface_adapter.board.BoardViewModel;
 import use_case.view_completion_count.ViewCompletionCountOutputBoundary;
 import use_case.view_completion_count.ViewCompletionCountOutputData;
 
+/**
+ * Presenter for the ViewCompletionCount use case.
+ * Puts the counts and the "X of Y tasks completed" label into BoardViewModel.
+ */
 public class ViewCompletionCountPresenter implements ViewCompletionCountOutputBoundary {
     private final BoardViewModel boardViewModel;
 
